@@ -2,6 +2,15 @@
 
 return [
 
+    // TRACKSOLID
+    'tracksolid' => [
+        'app_key' => env('TRACKSOLID_APP_KEY'),
+        'app_secret' => env('TRACKSOLID_APP_SECRET'),
+        'user_id' => env('TRACKSOLID_USER_ID'),
+        'password' => env('TRACKSOLID_PASSWORD'),
+        'base_url' => env('TRACKSOLID_BASE_URL'),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Third Party Services

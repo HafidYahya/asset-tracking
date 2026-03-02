@@ -64,6 +64,7 @@
                 <thead>
                     <tr>
                         <th>IMEI</th>
+                        <th>Status</th>
                         <th>Kode Aset</th>
                         <th>Nama Aset</th>
                         <th class="text-end pe-4">Action</th>
@@ -74,10 +75,19 @@
                         <tr data-search="{{ strtolower(trim(($row->imei ?? '') . ' ' . ($row->asset_code ?? '') . ' ' . ($row->asset_name ?? ''))) }}"
                             data-marker-key="{{ $row->imei }}">
                             <td>{{ $row->imei ?? '-' }}</td>
+                            <td>
+                                <span
+                                    class="badge badge-md 
+        {{ $row->status === 1 ? 'bg-success' : ($row->status === 0 ? 'bg-danger' : 'bg-secondary') }}">
+
+                                    {{ $row->status === 1 ? 'Aktif' : ($row->status === 0 ? 'Nonaktif' : '-') }}
+
+                                </span>
+                            </td>
                             <td>{{ $row->asset_code ?? '-' }}</td>
                             <td>{{ $row->asset_name ?? '-' }}</td>
                             <td class="text-end pe-4">
-                                @if (!is_null($row->latitude) && !is_null($row->longitude))
+                                @if (!is_null($row->lat) && !is_null($row->lng))
                                     <button type="button" class="btn btn-sm btn-primary btn-zoom"
                                         data-marker-key="{{ $row->imei }}">
                                         <i class="bi bi-geo-alt me-1"></i>Zoom
@@ -132,16 +142,16 @@
 
             const markerCoords = [];
             trackingData.forEach((item) => {
-                const lat = Number(item.latitude);
-                const lng = Number(item.longitude);
+                const lat = Number(item.lat);
+                const lng = Number(item.lng);
                 if (Number.isFinite(lat) && Number.isFinite(lng)) {
                     const popupHtml = `
                         <div style="font-size:12px;">
                             <div><strong>IMEI:</strong> ${item.imei ?? '-'}</div>
                             <div><strong>Kode Aset:</strong> ${item.asset_code ?? '-'}</div>
                             <div><strong>Nama Aset:</strong> ${item.asset_name ?? '-'}</div>
-                            <div><strong>Electricity:</strong> ${item.electricity ?? '-'} %</div>
-                        </div>
+                            <div><strong>Electricity:</strong> ${item.electQuantity ?? '-'} %</div>
+                            <div><strong>Status:</strong> <span class="badge ${Number(item.status) === 1 ? 'bg-success' : Number(item.status) === 0 ? 'bg-danger' : 'bg-secondary'}">${Number(item.status) === 1 ? 'Aktif' : Number(item.status) === 0 ? 'Nonaktif' : '-'}</span></div>
                     `;
                     const marker = L.marker([lat, lng]).addTo(map).bindPopup(popupHtml);
                     markersByKey[item.imei] = marker;
