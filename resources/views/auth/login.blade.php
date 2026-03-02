@@ -50,7 +50,7 @@
         <div class="col-12 col-sm-10 col-md-8 col-lg-5">
             <div class="card border-0 shadow-sm bg-dark">
                 <div class="card-body p-4 p-md-5">
-                    <img src="{{ asset('assets/logo-republikkorp.png') }}" alt="Logo RepublikKorp" class="mb-3"
+                    <img src="{{ asset('asset/logo-republikkorp.png') }}" alt="Logo RepublikKorp" class="mb-3"
                         style="width: 250px;">
                     <p class="text-light mb-4">Silakan login untuk melanjutkan.</p>
 

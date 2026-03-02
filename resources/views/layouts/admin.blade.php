@@ -682,7 +682,7 @@
     <aside id="sidebar">
 
         <a href="{{ route('admin.dashboard') }}" class="sidebar-brand">
-            <img src="{{ asset('assets/logo-republikkorp.png') }}" alt="Logo RepublikKorp" width="120px">
+            <img src="{{ asset('asset/logo-republikkorp.png') }}" alt="Logo RepublikKorp" width="120px">
         </a>
 
         <div class="sidebar-scroll">
