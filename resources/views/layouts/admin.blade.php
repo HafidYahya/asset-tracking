@@ -682,10 +682,7 @@
     <aside id="sidebar">
 
         <a href="{{ route('admin.dashboard') }}" class="sidebar-brand">
-            <div class="sidebar-brand-icon">
-                <i class="bi bi-grid-3x3-gap-fill"></i>
-            </div>
-            <span class="sidebar-brand-name">AdminPanel</span>
+            <img src="{{ asset('assets/logo-republikkorp.png') }}" alt="Logo RepublikKorp" width="120px">
         </a>
 
         <div class="sidebar-scroll">
